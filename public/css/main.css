@@ -1,0 +1,94 @@
+header {
+  background-color: #ffcd00; }
+  header .container-header {
+    padding: 20px;
+    max-width: 70vw;
+    margin: 0 auto;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    @media (max-width: 768px) {
+      header .container-header {
+        max-width: 100%; } }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      header .container-header {
+        max-width: 85vw; } }
+    header .container-header .carrinho {
+      position: relative;
+      text-decoration: none;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      background-image: url("/public/images/menu.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center center; }
+      header .container-header .carrinho .itens-carrinho {
+        position: absolute;
+        left: -12px;
+        bottom: -6px;
+        background-color: #d62a33;
+        color: #fff;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 100px;
+        display: inline-block; }
+
+html {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif; }
+
+body {
+  font-size: 1rem;
+  color: #444444;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0; }
+
+main {
+  padding: 20px;
+  max-width: 70vw;
+  border: 1px solid red;
+  margin: auto; }
+  @media (max-width: 768px) {
+    main {
+      max-width: 100%; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    main {
+      max-width: 85vw; } }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
+
+h1 {
+  font-size: 2.35em; }
+
+h2 {
+  font-size: 2em; }
+
+h3 {
+  font-size: 1.75em; }
+
+h4 {
+  font-size: 1.5em; }
+
+h5 {
+  font-size: 1.25em; }
+
+h6 {
+  font-size: 1em; }
+
+/*# sourceMappingURL=maps/main.css.map */

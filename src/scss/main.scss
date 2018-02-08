@@ -1,0 +1,62 @@
+// Imports
+@import 'variaveis';
+@import 'header';
+
+// RESET
+html {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    font-size: 1rem;
+    color: #444444;
+    min-height: 100%;
+    background-color: #f2f2f2;
+    padding: 0;
+    margin: 0;
+}
+main {
+    padding: 20px;
+    max-width: 70vw;
+    border: 1px solid red;
+    margin: auto;
+
+    @media #{$mobile} {
+        max-width: 100%;
+    }
+    @media #{$tablet} {
+        max-width: 85vw;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    // font-family: Verdana, Geneva, sans-serif;
+    // font-weight: 200;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+h1 {
+    font-size: 2.35em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.75em;
+}
+h4 {
+    font-size: 1.5em;
+}
+h5 {
+    font-size: 1.25em;
+}
+h6 {
+    font-size: 1em;
+}
