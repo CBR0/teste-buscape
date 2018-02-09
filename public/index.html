@@ -1,42 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Teste Buscapé - Front-End</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-    <header>
-        <div class="container-header">
-            <div>
-                <a href="/">
-                    <img src="/images/logo.png" width="107" />
-                </a>
-            </div>
+<html lang="pt-br" ng-app="buscapeApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Teste Buscapé - Front-End</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
 
-            <div>
-                <a href="javascript:void(0);" class="carrinho">
-                    <span class="itens-carrinho">2</span>
-                </a>
-            </div>
-        </div>
-    </header>
-    <main>
-      <h1>This is the main content.</h1>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="/public/js/angular-locale_pt-br.js"></script>
 
-      <nav>
-        <h4>This is the navigation section.</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-      </nav>
-      <aside>
-        <h4>This is an aside section.</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-      </aside>
-    </main>
-    <footer>This is the footer.</footer>
-</body>
+        <script src="/js/main.js"></script>
+    </head>
+    <body ng-controller="mainController as vm">
+        <header>
+            <div class="container-header">
+                <div>
+                    <a href="/">
+                        <img src="/images/logo.png" width="107" />
+                    </a>
+                </div>
+
+                <div>
+                    <a href="javascript:void(0);" class="carrinho">
+                        <span class="itens-carrinho">2</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <div class="products">
+                <div class="product" ng-repeat="item in vm.produtos">
+                    <div class="gallery">
+                        <div class="item" ng-repeat="image in item.product.images" ng-class="{'selected': $index === 0}">
+                            <!-- <pre>{{ image }}</pre> -->
+                            <img ng-src="{{ image }}" imagem404 />
+                        </div>
+                    </div>
+
+                    <div class="large-image">
+                        <img ng-src="{{ item.product.images[0] }}" imagem404 >
+                    </div>
+
+                    <div class="info-product">
+                        <div class="name-product">
+                            <h4>{{ item.product.name }}</h4>
+                        </div>
+                        <div class="price-container">
+                            <div class="price">
+                                <div>
+                                    <span class="best-price">MELHOR PREÇO</span>
+                                    <span class="installments">{{ item.product.price.installments }}x R$ </span>
+                                    <span class="value">{{ item.product.price.installmentValue | currency:'': 7 }}</span>
+
+                                    <button>Adicionar ao carrinho ></button>
+                                </div>
+                                <div class="full-price">
+                                    <strong>ou <span class="value">{{ item.product.price.value | currency:'': 7 }}</span> à vista</strong>
+                                </div>
+                                <!-- <pre>{{ item.product | json}}</pre> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

@@ -1,6 +1,9 @@
 // Imports
 @import 'variaveis';
+@import 'mixins';
+@import 'flex';
 @import 'header';
+@import 'produtos';
 
 // RESET
 html {
@@ -16,9 +19,8 @@ body {
     margin: 0;
 }
 main {
-    padding: 20px;
+    padding: 20px 10px;
     max-width: 70vw;
-    border: 1px solid red;
     margin: auto;
 
     @media #{$mobile} {

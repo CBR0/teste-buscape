@@ -1,10 +1,21 @@
+.flex {
+  display: flex; }
+
+.row {
+  flex-direction: row; }
+
+.column {
+  flex-direction: column; }
+
+.flex-wrap {
+  flex-wrap: wrap; }
+
 header {
   background-color: #ffcd00; }
   header .container-header {
     padding: 20px;
     max-width: 70vw;
     margin: 0 auto;
-    border: 1px solid red;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -38,6 +49,123 @@ header {
         border-radius: 100px;
         display: inline-block; }
 
+@media (min-width: 1024px) {
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; } }
+
+.products .product {
+  background-color: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 3px;
+  display: flex; }
+  @media (min-width: 1024px) {
+    .products .product {
+      flex-direction: column;
+      max-width: 26%; } }
+  .products .product .gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    @media (min-width: 1024px) {
+      .products .product .gallery {
+        flex-direction: row; } }
+    .products .product .gallery .item {
+      border: 2px solid #f2f2f2;
+      border-radius: 5px;
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+      margin-bottom: 8px; }
+      .products .product .gallery .item:hover {
+        cursor: pointer; }
+      .products .product .gallery .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; }
+      .products .product .gallery .item.selected {
+        border-color: #ffcd00; }
+  .products .product .large-image {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .products .product .large-image img {
+      max-width: 95%;
+      max-height: 423px; }
+      @media (min-width: 1024px) {
+        .products .product .large-image img {
+          max-width: 75%; } }
+  .products .product .info-product {
+    min-width: 50%;
+    max-width: 50%;
+    display: inline-block;
+    color: #444444; }
+    @media (min-width: 1024px) {
+      .products .product .info-product {
+        min-width: 100%; } }
+    .products .product .info-product .name-product {
+      border-bottom: 1px solid #e6e6e6; }
+      .products .product .info-product .name-product h4 {
+        font-weight: 500; }
+        @media (min-width: 1024px) {
+          .products .product .info-product .name-product h4 {
+            font-size: 1.3rem; } }
+    .products .product .info-product .price-container {
+      padding: 20px 0;
+      font-weight: 500; }
+      .products .product .info-product .price-container .price {
+        padding: 30px 0;
+        position: relative; }
+        .products .product .info-product .price-container .price .best-price {
+          background-color: #1990df;
+          color: #fff;
+          padding: 5px 10px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 3px;
+          font-size: .7rem;
+          display: block;
+          min-width: 125px;
+          max-width: 125px;
+          text-align: center; }
+          .products .product .info-product .price-container .price .best-price:before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            right: -11px;
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 13px solid #198fe0;
+            transform: rotate(180deg);
+            border-radius: 100px; }
+        .products .product .info-product .price-container .price .installments {
+          color: #22b14c;
+          font-weight: 600;
+          font-size: 1.6rem; }
+        .products .product .info-product .price-container .price .value {
+          color: #22b14c;
+          font-weight: 600;
+          font-size: 2rem; }
+        .products .product .info-product .price-container .price .full-price {
+          color: #757575;
+          margin-top: 5px; }
+          .products .product .info-product .price-container .price .full-price .value {
+            font-size: 1rem; }
+        .products .product .info-product .price-container .price button {
+          border: 1px solid transparent;
+          color: #fff;
+          background-color: #22b14c;
+          padding: 10px 20px;
+          position: relative;
+          top: -5px; }
+
 html {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif; }
@@ -51,9 +179,8 @@ body {
   margin: 0; }
 
 main {
-  padding: 20px;
+  padding: 20px 10px;
   max-width: 70vw;
-  border: 1px solid red;
   margin: auto; }
   @media (max-width: 768px) {
     main {
