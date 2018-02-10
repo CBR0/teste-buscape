@@ -153,6 +153,11 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between; }
+    @media (max-width: 599px) {
+      .products .product .gallery {
+        flex-direction: row;
+        justify-content: flex-start;
+        position: absolute; } }
     @media (min-width: 1024px) {
       .products .product .gallery {
         flex-direction: row; } }
@@ -163,6 +168,10 @@ header {
       height: 50px;
       padding: 5px;
       margin-bottom: 8px; }
+      @media (max-width: 599px) {
+        .products .product .gallery .item {
+          width: 25px;
+          height: 25px; } }
       .products .product .gallery .item:hover {
         cursor: pointer; }
       .products .product .gallery .item img {
@@ -188,6 +197,9 @@ header {
     max-width: 55%;
     display: inline-block;
     color: #444444; }
+    @media (max-width: 599px) {
+      .products .product .info-product {
+        margin-top: 20px; } }
     @media (min-width: 1024px) {
       .products .product .info-product {
         min-width: 100%; } }
@@ -232,6 +244,10 @@ header {
             .products .product .info-product .price-container .price .add-to-cart button:hover {
               background-color: #1e9c43;
               cursor: pointer; }
+            @media (max-width: 599px) {
+              .products .product .info-product .price-container .price .add-to-cart button {
+                min-width: inherit;
+                padding: 10px 5px; } }
           @media (max-width: 599px) {
             .products .product .info-product .price-container .price .add-to-cart button {
               font-size: .8rem; } }
@@ -283,7 +299,7 @@ header {
   width: calc(100% - 36px);
   height: auto;
   background-color: #daaf00;
-  top: 110px;
+  top: 90px;
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.51);
   z-index: 10;
   opacity: 0;
@@ -338,7 +354,8 @@ header {
       margin-top: 10px; }
   .cart .cart-empty {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    padding: 25px;
     text-align: center; }
 
 * {

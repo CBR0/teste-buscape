@@ -102,6 +102,7 @@ buscapeApp.controller('mainController', function($scope, $http) {
     vm.subTotalParcelamento = 0;
     vm.toggleCart = toggleCart;
     vm.fecharCarrinho = fecharCarrinho;
+    vm.selectItemPreview = selectItemPreview;
 
     init()
 
@@ -109,6 +110,10 @@ buscapeApp.controller('mainController', function($scope, $http) {
         $http.get("/js/data.json")
             .then(function(response) {
                 console.log(response);
+                var produtos = response.data.items.map(function(item) {
+                    item.product.previewImage = item.product.images[0];
+                    return item;
+                });
                 vm.produtos = response.data.items;
             });
     }
@@ -143,5 +148,12 @@ buscapeApp.controller('mainController', function($scope, $http) {
 
     function fecharCarrinho() {
         vm.carrinhoAberto = false;
+    }
+    function selectItemPreview(item, image) {
+        item.product.previewImage = image;
+        // var produto = vm.produtos.map(function(item) {
+        //     item.product.
+        //     debugger;
+        // });
     }
 });

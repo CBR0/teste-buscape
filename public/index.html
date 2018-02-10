@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="theme-color" content="#daaf00">
         <title>Teste Buscapé - Front-End</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="/css/main.css">
@@ -20,7 +21,7 @@
             <div class="container-header">
                 <div>
                     <a href="/">
-                        <img src="/images/logo.png" width="107" />
+                        <img src="/images/logo.png" width="70" />
                     </a>
                 </div>
 
@@ -71,14 +72,14 @@
             <div class="products">
                 <div class="product" ng-repeat="item in vm.produtos">
                     <div class="gallery">
-                        <div class="item" ng-repeat="image in item.product.images" ng-class="{'selected': $index === 0}">
+                        <div class="item" ng-repeat="image in item.product.images" ng-class="{'selected': item.product.previewImage == undefined ? $first : item.product.previewImage == image }" ng-click="vm.selectItemPreview(item, image)">
                             <!-- <pre>{{ image }}</pre> -->
                             <img ng-src="{{ image }}" imagem404 />
                         </div>
                     </div>
 
                     <div class="large-image">
-                        <img ng-src="{{ item.product.images[0] }}" imagem404 >
+                        <img ng-src="{{ item.product.previewImage }}" width="95%" imagem404 >
                     </div>
 
                     <div class="info-product">

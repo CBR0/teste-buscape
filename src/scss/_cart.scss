@@ -4,7 +4,7 @@
     width: calc(100% - 36px);
     height: auto;
     background-color: #daaf00;
-    top: 110px;
+    top: 90px;
     box-shadow: 4px 0 24px rgba(0,0,0,0.51);
 
     z-index: 10;
@@ -88,7 +88,8 @@
     }
     .cart-empty {
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
+        padding: 25px;
         text-align: center;
     }
 }
