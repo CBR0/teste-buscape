@@ -4,8 +4,11 @@
 Executar com Powershell ou CMD `npm install` na raiz do projeto.
 
 ## Rodando o projeto
+O sass é transpilado via gulp com node-sass, o projeto é inciado usando browser-sync.
 
-  `gulp`
+      gulp
+
+> É possivel rodar a aplicação usando webserver comum, como Nginx ou até mesmo Express com Nodejs basta utilizar o diretório **public**.
 
 ## Backlog
 
