@@ -26,13 +26,13 @@ var buscapeApp = angular.module('buscapeApp', ['ngRoute']);
             }, function (value) {
                 if (!value) {
                     if (element.attr('imagem404') == 'objeto')
-                        element.attr('src', 'public/images/logo.png');
+                        element.attr('src', 'images/logo.png');
                     else
-                        element.attr('src', 'public/images/menu.png');
+                        element.attr('src', 'images/menu.png');
                 }
             });
             element.bind('error', function () {
-                element.attr('src', 'public/images/logo.png');
+                element.attr('src', 'images/logo.png');
             });
         }
     }
@@ -65,33 +65,6 @@ var buscapeApp = angular.module('buscapeApp', ['ngRoute']);
 
 })();
 
-
-
-
- // Rotas simples
-//  buscapeApp.config(function($routeProvider) {
-//     $routeProvider
-
-//         // route for the home page
-//         .when('/', {
-//             templateUrl : 'pages/home.html',
-//             controller  : 'mainController'
-//         })
-
-//         // route for the about page
-//         .when('/about', {
-//             templateUrl : 'pages/about.html',
-//             controller  : 'aboutController'
-//         })
-
-//         // route for the contact page
-//         .when('/contact', {
-//             templateUrl : 'pages/contact.html',
-//             controller  : 'contactController'
-//         });
-// });
-
-// create the controller and inject Angular's $scope
 buscapeApp.controller('mainController', function($scope, $http) {
     var vm = this;
     vm.produtos = [];
@@ -107,9 +80,8 @@ buscapeApp.controller('mainController', function($scope, $http) {
     init()
 
     function init() {
-        $http.get("/js/data.json")
+        $http.get("js/data.json")
             .then(function(response) {
-                console.log(response);
                 var produtos = response.data.items.map(function(item) {
                     item.product.previewImage = item.product.images[0];
                     return item;
@@ -151,9 +123,5 @@ buscapeApp.controller('mainController', function($scope, $http) {
     }
     function selectItemPreview(item, image) {
         item.product.previewImage = image;
-        // var produto = vm.produtos.map(function(item) {
-        //     item.product.
-        //     debugger;
-        // });
     }
 });
