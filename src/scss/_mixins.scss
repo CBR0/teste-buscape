@@ -48,14 +48,16 @@ $grid-960: 959px;
               min-width: calc(#{$column-width} - #{$gutter});
           }
         }
-
       }
+
     }
   }
 }
 
 @include n-columns(450px, 20px, true, 5);
-
+@include mobile {
+  @include n-columns(250px, 20px, true, 5);
+}
 .products {
   .product {
     box-sizing: border-box;
