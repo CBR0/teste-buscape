@@ -1,21 +1,22 @@
-# Teste para Front-end Buscapé
+# Teste para Front-end
 
-## Stack
+## Instalação
+Executar com Powershell ou CMD `npm install` na raiz do projeto.
 
-* Use a stack da sua preferência.
-* Não esqueça de colocar instruções para rodar o projeto :)
+## Rodando o projeto
 
-## Pré-requisitos
+  `gulp`
 
-* Layout responsivo.
-* Listar os produtos.
-* Adicionar no carrinho.
-* Remover do carrinho.
-* Galeria de imagens
+## Backlog
 
-## Bonus game
+**Pré-requisitos**
+- [x] Layout responsivo
+- [x] Listar os produtos
+- [x] Remover do carrinho
+- [x] Galeria de imagens
 
-* Trocar imagens quebradas para imagens de erro default.
-* Renderizar no server side.
-* Persistir os dados.
-* Teste do código.
+**Bonus game**
+- [x] Trocar imagens quebradas para imagens de erro default.
+- [ ] Renderizar no server side.
+- [ ] Persistir os dados.
+- [ ] Teste do código.
