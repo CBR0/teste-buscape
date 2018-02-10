@@ -1,12 +1,17 @@
 # Teste para Front-end
 
+##Dependências
+- Nodejs
+
 ## Instalação
-Executar com Powershell ou CMD `npm install` na raiz do projeto.
+Em ambiente de DEV o projeto é inciado usando **browser-sync** com **gulp** (para facilitar testar em Smartphones), caso precise gerar o CSS a partir do Sass é preciso instalar globalmente o gulp com `npm install -g gulp`.
+
+    npm install
 
 ## Rodando o projeto
-O sass é transpilado via gulp com node-sass, o projeto é inciado usando browser-sync.
+O sass é transpilado via gulp com node-sass
 
-      gulp
+      npm start
 
 > É possivel rodar a aplicação usando webserver comum, como Nginx ou até mesmo Express com Nodejs basta utilizar o diretório **public**.
 
