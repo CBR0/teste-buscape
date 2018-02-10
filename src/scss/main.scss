@@ -4,6 +4,7 @@
 @import 'flex';
 @import 'header';
 @import 'produtos';
+@import 'cart';
 
 // RESET
 * {
@@ -25,6 +26,8 @@ main {
     padding: 20px 10px;
     max-width: 70vw;
     margin: auto;
+    position: relative;
+    top: 110px;
 
     @media #{$mobile} {
         max-width: 100%;

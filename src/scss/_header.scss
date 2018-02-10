@@ -1,7 +1,11 @@
 header {
     background-color: $primary;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 
     .container-header {
+        position: relative;
         padding: 20px;
         max-width: 70vw;
         // height: 207px;
@@ -33,6 +37,16 @@ header {
 
             .itens-carrinho {
                 $space-definition: 25px;
+                height: 1px;
+                width: 1px;
+                opacity: 0;
+                transition: all 0.25s ease;
+
+                &.show {
+                    opacity: 1;
+                    height: $space-definition;
+                    width: $space-definition;
+                }
 
                 position: absolute;
                 left: -12px;
@@ -48,5 +62,19 @@ header {
                 display: inline-block;
             }
         }
+    }
+}
+@keyframes to-show {
+    0% {
+        width: 1px;
+        height: 1px;
+    }
+    50% {
+        width: 50px;
+        height: 50px;
+    }
+    50% {
+        width: 25px;
+        height: 25px;
     }
 }

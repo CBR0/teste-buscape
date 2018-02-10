@@ -1,0 +1,94 @@
+.cart {
+    // border: 2px solid red;
+    position: absolute;
+    width: calc(100% - 36px);
+    height: auto;
+    background-color: #daaf00;
+    top: 110px;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.51);
+
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
+    .list {
+        overflow-y: auto;
+        max-height: calc(100vh / 2);
+
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background-color: rgba(0,0,0,.1);
+            margin-bottom: 5px;
+
+            .thumb {
+                margin-right: 10px;
+
+                img {
+                    // max-width: 5px;
+                    border: 2px solid #000;
+                }
+            }
+            .info {
+                color: #fff;
+                font-weight: 500;
+                flex: 1 0 260px;
+                max-width: 50%;
+
+                .price {
+                    margin-top: 10px;
+
+                    .installments {
+                        color: #000;
+                        display: block;
+                    }
+                    .value {
+                        // display: block;
+                        color: #000;
+                    }
+                }
+            }
+            .remove {
+                justify-content: space-between;
+                flex: 1;
+                text-align: right;
+                align-self: flex-start;
+
+                i {
+                    // border: 1px solid red;
+                    font-size: 1.5rem;
+                    padding: 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .subtotal {
+        text-align: right;
+        // border: 1px solid red;
+        padding: 16px;
+        font-weight: 600;
+        p {
+            margin: 5px 0;
+        }
+        .header {
+            border-bottom: 1px solid #000;
+        }
+        .values {
+            margin-top: 10px;
+        }
+    }
+    .cart-empty {
+        color: #fff;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}

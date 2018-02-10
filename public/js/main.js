@@ -11,7 +11,7 @@ var buscapeApp = angular.module('buscapeApp', ['ngRoute']);
     imagem404.$inject = ['$window'];
 
     function imagem404($window) {
-        //Retorna a imagem padrão de perfil caso não seja encontrado a imagem definica na tag SRC
+        //Retorna a imagem padrão não seja encontrado a imagem definica na tag ng-src
         var directive = {
             link: link,
             scope: {
@@ -37,7 +37,35 @@ var buscapeApp = angular.module('buscapeApp', ['ngRoute']);
         }
     }
 
+    angular
+        .module('buscapeApp')
+        .directive("outsideClick", ['$document','$parse', function( $document, $parse ){
+
+        return {
+            link: function( $scope, $element, $attributes ){
+                var scopeExpression = $attributes.outsideClick,
+                    onDocumentClick = function(event){
+                        var isChild = $element.find(event.target).length > 0;
+                        var element = $(event.target);
+                        var isElementsToClick = element.hasClass("carrinho") || element.hasClass("itens-carrinho") || element.hasClass("remove") || element.hasClass("botao-remover")  || element.hasClass("fa-close");
+
+                        if(!isChild && !isElementsToClick ) {
+                            $scope.$apply(scopeExpression);
+                        }
+                    };
+
+                $document.on("click", onDocumentClick);
+
+                $element.on('$destroy', function() {
+                    $document.off("click", onDocumentClick);
+                });
+            }
+        }
+    }]);
+
 })();
+
+
 
 
  // Rotas simples
@@ -67,10 +95,53 @@ var buscapeApp = angular.module('buscapeApp', ['ngRoute']);
 buscapeApp.controller('mainController', function($scope, $http) {
     var vm = this;
     vm.produtos = [];
+    vm.cart = [];
+    vm.adicionarCarrinho = adicionarCarrinho;
+    vm.removerCarrinho = removerCarrinho;
+    vm.subTotal = 0;
+    vm.subTotalParcelamento = 0;
+    vm.toggleCart = toggleCart;
+    vm.fecharCarrinho = fecharCarrinho;
 
-    $http.get("/js/data.json")
-        .then(function(response) {
-            console.log(response);
-            vm.produtos = response.data.items;
-        });
+    init()
+
+    function init() {
+        $http.get("/js/data.json")
+            .then(function(response) {
+                console.log(response);
+                vm.produtos = response.data.items;
+            });
+    }
+
+    function adicionarCarrinho(item) {
+        vm.cart.push(item);
+
+        subTotal();
+
+    }
+    function removerCarrinho(item) {
+        var index = vm.cart.indexOf(item);
+        vm.cart.splice(index, 1);
+        subTotal();
+    }
+    function subTotal() {
+        var subtotal = 0;
+        var subTotalParcelamento = 0;
+
+        for (var i = 0; i < vm.cart.length; i++) {
+            subtotal = subtotal + vm.cart[i].product.price.value;
+        }
+        vm.subTotal = subtotal;
+        // Subtotal dividio pela quantidade de parcelas;
+        vm.subTotalParcelamento = vm.subTotal / 10;
+    }
+
+    function toggleCart () {
+        console.log('toggle')
+        vm.carrinhoAberto = !vm.carrinhoAberto;
+    };
+
+    function fecharCarrinho() {
+        vm.carrinhoAberto = false;
+    }
 });

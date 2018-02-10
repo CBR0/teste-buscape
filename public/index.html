@@ -7,7 +7,7 @@
         <title>Teste Buscapé - Front-End</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="/css/main.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
         <script src="/public/js/angular-locale_pt-br.js"></script>
@@ -25,9 +25,44 @@
                 </div>
 
                 <div>
-                    <a href="javascript:void(0);" class="carrinho">
-                        <span class="itens-carrinho">2</span>
+                    <a href="javascript:void(0);" class="carrinho" ng-click="vm.toggleCart()">
+                        <span class="itens-carrinho"  ng-class="{'show': vm.cart.length > 0}">{{ vm.cart.length }}</span>
                     </a>
+                </div>
+                <div class="cart" ng-class="{'open': vm.carrinhoAberto}" outside-click="vm.fecharCarrinho()">
+                    <div class="list" ng-if="vm.cart.length > 0">
+                        <div class="item" ng-repeat="item in vm.cart">
+                            <div class="thumb">
+                                <img ng-src="{{ item.product.images[0] }}" imagem404 width="100" />
+                            </div>
+                            <div class="info">
+                                <span class="name-product">{{ item.product.name }}</span>
+
+                                <div class="price">
+                                    <span class="installments"><strong>{{ item.product.price.installments }} R$ {{ item.product.price.installmentValue | currency:'': 7 }}</strong></span>
+                                    <span class="value"><strong>ou <span class="value">{{ item.product.price.value | currency:'': 7 }}</span> à vista</strong></span>
+                                </div>
+                            </div>
+                            <div class="remove">
+                                <a class="botao-remover" ng-click="vm.removerCarrinho(item)">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subtotal" ng-if="vm.cart.length > 0">
+                        <div class="header">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="values">
+                            <p class="installments">10x R$ {{ vm.subTotalParcelamento | currency:'': 7  }}</p>
+                            <p class="price">ou R$ {{ vm.subTotal | currency:'': 7  }} à vista</p>
+                        </div>
+                    </div>
+
+                    <div class="cart-empty" ng-if="vm.cart.length < 1">
+                        <p>Nenhum item adicionado ao carrinho!</p>
+                    </div>
                 </div>
             </div>
         </header>
@@ -62,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="add-to-cart">
-                                    <button>Adicionar ao carrinho <i class="fa fa-chevron-right"></i></button>
+                                    <button ng-click="vm.adicionarCarrinho(item)">Adicionar ao carrinho <i class="fa fa-chevron-right"></i></button>
                                 </div>
                                 <!-- <pre>{{ item.product | json}}</pre> -->
                             </div>
