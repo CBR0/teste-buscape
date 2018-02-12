@@ -114,7 +114,6 @@ buscapeApp.controller('mainController', function($scope, $http) {
     }
 
     function toggleCart () {
-        console.log('toggle')
         vm.carrinhoAberto = !vm.carrinhoAberto;
     };
 
